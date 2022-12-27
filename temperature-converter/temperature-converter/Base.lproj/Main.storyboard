@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="temperature_converter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="섭씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEC-wx-2QQ">
+                                <rect key="frame" x="186" y="128" width="42" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="섭씨 온도를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7Z-Ia-6WX">
+                                <rect key="frame" x="16" y="173" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B9-Vn-qC9">
+                                <rect key="frame" x="186" y="247" width="42" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="변환하기를 누르면 섭씨 온도가 나타납니다." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="px1-dV-kkj">
+                                <rect key="frame" x="16" y="292" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-5O-vU6">
+                                <rect key="frame" x="16" y="744" width="382" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="변환히기">
+                                    <backgroundConfiguration key="background" cornerRadius="8">
+                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="convertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QUw-L1-qXq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W6h-5O-vU6" secondAttribute="bottom" constant="80" id="35K-Ph-VOm"/>
+                            <constraint firstItem="9B9-Vn-qC9" firstAttribute="top" secondItem="n7Z-Ia-6WX" secondAttribute="bottom" constant="40" id="7Fw-G0-mmF"/>
+                            <constraint firstItem="gEC-wx-2QQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="7LD-VQ-0rv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="px1-dV-kkj" secondAttribute="trailing" constant="16" id="BCW-VZ-0MV"/>
+                            <constraint firstItem="9B9-Vn-qC9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CIx-6U-ARS"/>
+                            <constraint firstItem="px1-dV-kkj" firstAttribute="top" secondItem="9B9-Vn-qC9" secondAttribute="bottom" constant="16" id="HXR-bi-cZu"/>
+                            <constraint firstItem="n7Z-Ia-6WX" firstAttribute="top" secondItem="gEC-wx-2QQ" secondAttribute="bottom" constant="16" id="Ika-dm-Jyw"/>
+                            <constraint firstItem="gEC-wx-2QQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NEW-GG-dQD"/>
+                            <constraint firstItem="n7Z-Ia-6WX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Rjm-Vp-fPO"/>
+                            <constraint firstItem="px1-dV-kkj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZYy-pg-mr5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W6h-5O-vU6" secondAttribute="trailing" constant="16" id="fhf-KV-IEW"/>
+                            <constraint firstItem="W6h-5O-vU6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="rMM-fO-1hc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n7Z-Ia-6WX" secondAttribute="trailing" constant="16" id="udC-LW-FlQ"/>
+                            <constraint firstItem="W6h-5O-vU6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="veI-Mn-Syt"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ijt-MJ-Gle" appends="YES" id="Oth-PI-4kh"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="label1" destination="gEC-wx-2QQ" id="7JC-bT-712"/>
+                        <outlet property="label2" destination="9B9-Vn-qC9" id="pkW-xF-q74"/>
+                        <outlet property="text1" destination="n7Z-Ia-6WX" id="Odv-H3-mdH"/>
+                        <outlet property="text2" destination="px1-dV-kkj" id="7vi-2H-vLE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ijt-MJ-Gle">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="5P6-Lh-QPO"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="112" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
