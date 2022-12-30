@@ -52,16 +52,36 @@
                                 <buttonConfiguration key="configuration" style="plain" title="계산하기">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="24"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="calBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QhN-1x-KNm"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="넓이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4O-nf-PK1">
+                                <rect key="frame" x="24" y="479" width="35" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OnE-td-6BB">
+                                <rect key="frame" x="91" y="474" width="299" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="G4O-nf-PK1" firstAttribute="top" secondItem="oBX-c1-3G3" secondAttribute="bottom" constant="179" id="1vi-Lg-GNe"/>
                             <constraint firstItem="kyx-Jj-ZJs" firstAttribute="top" secondItem="ca9-4t-iXJ" secondAttribute="bottom" constant="64" id="3r7-qX-iEI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OnE-td-6BB" secondAttribute="trailing" constant="24" id="5da-rq-hvO"/>
+                            <constraint firstItem="G4O-nf-PK1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="8BS-zL-Eqc"/>
                             <constraint firstItem="Yw9-cc-qlM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="CgC-o5-eZ4"/>
+                            <constraint firstItem="OnE-td-6BB" firstAttribute="leading" secondItem="G4O-nf-PK1" secondAttribute="trailing" constant="32" id="GyQ-Wj-oOG"/>
                             <constraint firstItem="ca9-4t-iXJ" firstAttribute="top" secondItem="Yj0-YD-8vt" secondAttribute="bottom" constant="12" id="QYe-PG-b6M"/>
                             <constraint firstItem="oBX-c1-3G3" firstAttribute="top" secondItem="Z0l-PN-BdP" secondAttribute="bottom" constant="24" id="UX5-ot-5Yz"/>
                             <constraint firstItem="Yj0-YD-8vt" firstAttribute="top" secondItem="Yw9-cc-qlM" secondAttribute="bottom" constant="48" id="Ud0-H9-WJU"/>
+                            <constraint firstItem="OnE-td-6BB" firstAttribute="top" secondItem="kyx-Jj-ZJs" secondAttribute="bottom" constant="62" id="WP2-iS-hSG"/>
                             <constraint firstItem="oBX-c1-3G3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="ZBh-9p-R5c"/>
                             <constraint firstItem="Z0l-PN-BdP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="Zuw-aP-uKj"/>
                             <constraint firstItem="kyx-Jj-ZJs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="98" id="adS-2K-LE6"/>
@@ -73,9 +93,22 @@
                             <constraint firstItem="Yw9-cc-qlM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wKQ-0v-O9x"/>
                             <constraint firstItem="ca9-4t-iXJ" firstAttribute="leading" secondItem="oBX-c1-3G3" secondAttribute="trailing" constant="32" id="xId-j8-ysB"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dah-nS-HHk" appends="YES" id="2Of-Ku-DCl"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="areaTextfield" destination="OnE-td-6BB" id="aWp-GR-unf"/>
+                        <outlet property="lengthTextfield" destination="ca9-4t-iXJ" id="Kyg-3d-r9a"/>
+                        <outlet property="widthTextfield" destination="Yj0-YD-8vt" id="rBz-cY-R6U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dah-nS-HHk">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="K4h-hv-NMn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="-28.125"/>
         </scene>
