@@ -11,6 +11,8 @@ import UIKit
 // 2. UITableViewDelegate: 테이블 뷰에서 section의 header 및 footer를 관리하고, 셀을 삭제하거나 위치를 바꾸는 등 메서드 제공
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var datasource = [1,2,3,4,5]
     
     
@@ -44,6 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.deleteRows(at: [indexPath], with: .fade)  // 지우고 나서 numberOfRowsInSection 값 변경까지 해야 함!
             completion(true)
         }
+        deleteBtn.backgroundColor = UIColor.black     // 버튼 컬러 변경
         return UISwipeActionsConfiguration(actions: [deleteBtn])
     }
     
@@ -55,19 +58,99 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return UISwipeActionsConfiguration(actions: [shareBtn])
     }
+ 
+
+    override func viewDidLoad() {
+        // 뷰 인스턴스가 메모리에 올라왔으나 아직 화면은 뜨지 않은 상황
+        super.viewDidLoad()
+        // 테이블 자체가 편집이 가능한 상태
+        // self.tableView.isEditing = true
     
+// ========================================================
+        /* UIRefreshControl: 테이블 뷰를 아래로 당기면 새로고침 */
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .green
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetchData(_:)), for: .valueChanged)
+    }
+    
+    @objc func fetchData(_ sender:Any) {
+        tableView.refreshControl?.endRefreshing()
+    }
+    
+    
+// ========================================================
     /* indexPath에 따라 어떤 줄은 지울 수 있게, 어떤 줄은 지울 수 없게 설정하기 */
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let row = indexPath.row
-        return row % 2 == 0     // indexPath.row가 홀수일 때만 지울 수 있도록
+        return true     // indexPath.row가 홀수일 때만 지울 수 있도록
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+    // ================================================================
+    // cell 앞에 삭제 아이콘 버튼⛔️이 생성됨
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // cell 앞에 버튼 없애기
+    /*
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    // cell 앞에 버튼 없앴을 때 indent된 부분 없애기
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    */
+    
+    // cell 뒤에 순서 변경 버튼이 생성됨
+    // 겉보기로만 바뀐 상태: 다시 앱을 키면 원상복구됨
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to
+                   destinationIndexPath: IndexPath) {
+        // 빼서 집어넣기
+        let fromRow = sourceIndexPath.row
+        let toRow = destinationIndexPath.row
+        let data = datasource[fromRow]
+        datasource.remove(at: fromRow)
+        datasource.insert(data, at: toRow)
+        tableView.reloadData()
     }
 
     
     
+    /* 테이블 뷰 Editing Mode를 껐다 켰다 할 수 있는 버튼 생성 메서드*/
+    @IBAction func changeEditing(_ sender: Any) {
+        /*
+        if self.tableView.isEditing {
+            self.tableView.isEditing = false
+        } else {
+            self.tableView.isEditing = true
+        }
+        */
+        
+        // 또는
+        self.tableView.isEditing.toggle()
+    }   
+    
+    
+    // didSelectRowAt: cell 선택 시 화면 전환
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        NSLog("selected")
+        tableView.deselectRow(at: indexPath, animated: false)
+        performSegue(withIdentifier: "goDetail", sender: self)
+    }
+    
+    
+    // 나타나기 직전
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)    // 메인화면이 뜰 때 네비게이션 바 숨기기
+    }
+    
+    
+    // 사라지기 직전
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)   // 메인화면이 사라질 때 네비게이션 바 보이기
+    }
 }
 
