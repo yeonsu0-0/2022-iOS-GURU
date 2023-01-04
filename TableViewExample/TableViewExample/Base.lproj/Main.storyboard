@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Vs-Dv-y4R">
-                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Vs-Dv-y4R">
+                                <rect key="frame" x="0.0" y="150" width="414" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aw8-BW-sdk" style="IBUITableViewCellStyleDefault" id="iBF-HI-pwl">
@@ -47,9 +46,39 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1he-AZ-jxE"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-gO-2V0">
-                                <rect key="frame" x="-2" y="48" width="416" height="43"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="184" translatesAutoresizingMaskIntoConstraints="NO" id="ubg-45-vcD">
+                                <rect key="frame" x="20" y="48" width="374" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="간단한 메모를 남겨보세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUs-vd-TlS">
+                                        <rect key="frame" x="0.0" y="0.0" width="156" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8P-2p-GFe">
+                                        <rect key="frame" x="340" y="0.0" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="Zay-Ff-cCI"/>
+                                            <constraint firstAttribute="width" constant="34" id="t35-Z3-8DV"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus.app.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="addMemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSi-uP-pS7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="OUs-vd-TlS" secondAttribute="bottom" id="6Sd-TN-1yG"/>
+                                    <constraint firstAttribute="trailing" secondItem="t8P-2p-GFe" secondAttribute="trailing" id="Y5E-49-Gis"/>
+                                    <constraint firstItem="t8P-2p-GFe" firstAttribute="top" secondItem="ubg-45-vcD" secondAttribute="top" id="Yip-Kr-Mfj"/>
+                                    <constraint firstItem="OUs-vd-TlS" firstAttribute="leading" secondItem="ubg-45-vcD" secondAttribute="leading" id="cEv-UR-5Ow"/>
+                                    <constraint firstAttribute="bottom" secondItem="t8P-2p-GFe" secondAttribute="bottom" id="f1P-xE-Hlv"/>
+                                    <constraint firstItem="OUs-vd-TlS" firstAttribute="top" secondItem="ubg-45-vcD" secondAttribute="top" id="o8A-oN-5tF"/>
+                                    <constraint firstItem="t8P-2p-GFe" firstAttribute="leading" secondItem="OUs-vd-TlS" secondAttribute="trailing" constant="8" id="yVy-Ii-vWL"/>
+                                </constraints>
+                            </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-gO-2V0">
+                                <rect key="frame" x="0.0" y="106" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Edit" id="Y9h-Vo-XcF">
                                         <connections>
@@ -61,9 +90,22 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9Vs-Dv-y4R" firstAttribute="top" secondItem="pQV-gO-2V0" secondAttribute="bottom" id="8ME-Kh-2Ua"/>
+                            <constraint firstAttribute="trailing" secondItem="pQV-gO-2V0" secondAttribute="trailing" id="K0U-VF-vRX"/>
+                            <constraint firstItem="pQV-gO-2V0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L2N-Rn-WSV"/>
+                            <constraint firstItem="9Vs-Dv-y4R" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MMM-AR-cnc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ubg-45-vcD" secondAttribute="trailing" constant="20" id="Nwh-Jl-XNL"/>
+                            <constraint firstItem="9Vs-Dv-y4R" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RyW-CY-EXU"/>
+                            <constraint firstItem="pQV-gO-2V0" firstAttribute="top" secondItem="ubg-45-vcD" secondAttribute="bottom" constant="24" id="SKX-Jh-la8"/>
+                            <constraint firstItem="ubg-45-vcD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZgG-Pw-zRf"/>
+                            <constraint firstItem="9Vs-Dv-y4R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jWh-0x-Psf"/>
+                            <constraint firstItem="ubg-45-vcD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tyg-kS-lqF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="D61-NP-GnC"/>
                     <connections>
+                        <outlet property="memoText" destination="OUs-vd-TlS" id="vHG-IF-XnY"/>
                         <outlet property="tableView" destination="9Vs-Dv-y4R" id="6lG-xS-kh2"/>
                     </connections>
                 </viewController>
@@ -98,10 +140,9 @@
         <!--Navigation Controller-->
         <scene sceneID="tq4-6h-EEN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aBz-eY-CCA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="aBz-eY-CCA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e5P-4f-Ib7">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -115,6 +156,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

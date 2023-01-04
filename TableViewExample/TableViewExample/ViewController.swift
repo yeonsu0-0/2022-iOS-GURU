@@ -12,8 +12,11 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var memoText: UITextField!
     
-    var datasource = [1,2,3,4,5]
+    // 변수 초기화
+    var datasource:[String] = []
+    // 또는 var datasource = [String]()
     
     
     /* numberOfRowsInSection */
@@ -46,8 +49,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.deleteRows(at: [indexPath], with: .fade)  // 지우고 나서 numberOfRowsInSection 값 변경까지 해야 함!
             completion(true)
         }
-        deleteBtn.backgroundColor = UIColor.black     // 버튼 컬러 변경
-        return UISwipeActionsConfiguration(actions: [deleteBtn])
+        
+        
+        // 스와이프 시 수정 버튼 나타내기
+        let editBtn = UIContextualAction(style: .normal, title: "Edit") { [weak self](action, view, completion) in
+            
+            let editAlert = UIAlertController(title: "Edit Memo", message: "Change your memo", preferredStyle: .alert)
+            
+            editAlert.addTextField { (textField) in
+                textField.text = self?.datasource[indexPath.row]
+            }
+            
+            editAlert.addAction(UIAlertAction(title: "Modify", style: .default, handler: { (action) in
+                if let fields = editAlert.textFields,
+                    let textField = fields.first,
+                    let text = textField.text {
+                    self?.datasource[indexPath.row] = text
+                    // self?.tableView.reloadData()
+                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
+                }
+            }))
+            
+            editAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self!.present(editAlert, animated: true, completion: nil)
+            completion(true)
+        }
+        
+        
+        deleteBtn.backgroundColor = UIColor.red     // 버튼 컬러 변경
+        editBtn.backgroundColor = UIColor.blue
+        return UISwipeActionsConfiguration(actions: [deleteBtn, editBtn])
     }
     
     /* leading */
@@ -58,6 +90,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return UISwipeActionsConfiguration(actions: [shareBtn])
     }
+    
+    
  
 
     override func viewDidLoad() {
@@ -152,5 +186,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)   // 메인화면이 사라질 때 네비게이션 바 보이기
     }
+    
+    
+    // 추가 버튼 메서드
+    @IBAction func addMemo(_ sender: UIButton) {
+        // print(memoText.text)     항상 잘 실행되는지 확인하는 습관 기르기
+        
+        // 옵셔널 언래핑
+        guard let memo = memoText.text, memo != "" else {
+            return
+        }
+        // print(memo)
+        self.datasource.append(memo)    // 데이터 추가
+        memoText.text = ""              // 텍스트 필드 초기화
+        self.tableView.reloadData()     // 테이블뷰 갱신
+        
+    }
+    
+    
+    // cell 높이 설정
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView.frame.height / 12
+    }
+    
 }
 
