@@ -28,9 +28,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /* cellForRowAt */
     // 해당 줄에 어떤 내용을 넣을 것인지 설정 (Cell 반환)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        /* Basic Cell */
+        // let cell = UITableViewCell()
+        // cell.textLabel?.text = "\(datasource[row])"
+        
+        /* Custom Cell */
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memoCell", for: indexPath) as! memoCell
+        // withIdentifier는 [attribute inspectors] - [Identifier] 설정 값임을 유의히기!
+        
         let row = indexPath.row
-        cell.textLabel?.text = "\(datasource[row])"
+        cell.memoLabel.text = "\(datasource[row])"
+        cell.numLabel.text = "\(row+1)"
+        
         return cell
     }
     
@@ -54,12 +63,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // 스와이프 시 수정 버튼 나타내기
         let editBtn = UIContextualAction(style: .normal, title: "Edit") { [weak self](action, view, completion) in
             
+            // 1. [Edit]버튼 누르면 Alert창 나오는 변수 선언
             let editAlert = UIAlertController(title: "Edit Memo", message: "Change your memo", preferredStyle: .alert)
             
+            // 2. Alert창에 textField 추가하고, cell의 텍스트값 불러오기
             editAlert.addTextField { (textField) in
                 textField.text = self?.datasource[indexPath.row]
             }
             
+            // 3. [수정]버튼 생성 및 수정 액션 할당
             editAlert.addAction(UIAlertAction(title: "Modify", style: .default, handler: { (action) in
                 if let fields = editAlert.textFields,
                     let textField = fields.first,
@@ -70,6 +82,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }))
             
+            // 4. [취소]버튼 생성
             editAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
             self!.present(editAlert, animated: true, completion: nil)
