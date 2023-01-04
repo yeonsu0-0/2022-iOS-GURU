@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="webToonCell" id="Hyv-WA-jBQ">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="webToonCell" id="Hyv-WA-jBQ" customClass="WebToonCell" customModule="Naver_Webtoon" customModuleProvider="target">
                                         <rect key="frame" x="83" y="0.0" width="248" height="442"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AW6-2Q-xZQ">
@@ -41,19 +41,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNs-ij-Ben">
-                                                    <rect key="frame" x="8" y="305.5" width="232" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <rect key="frame" x="8" y="305.5" width="232" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvs-A7-3lF">
-                                                    <rect key="frame" x="8" y="333.5" width="232" height="19.5"/>
+                                                    <rect key="frame" x="8" y="329" width="232" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9n-Nj-WUJ">
-                                                    <rect key="frame" x="8" y="369" width="232" height="18"/>
+                                                    <rect key="frame" x="8" y="364.5" width="232" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -75,6 +75,12 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="248" height="442"/>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="R9n-Nj-WUJ" id="vdu-m7-9wB"/>
+                                            <outlet property="ratingLabel" destination="Cvs-A7-3lF" id="bAN-Ki-XzH"/>
+                                            <outlet property="titleImage" destination="bLx-T2-AQj" id="E4d-8B-fLE"/>
+                                            <outlet property="titleLabel" destination="fNs-ij-Ben" id="xwV-LR-CAL"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
