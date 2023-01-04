@@ -55,7 +55,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self?.datasource.remove(at: row)
             
             // 2. 화면에서 지우기
-            tableView.deleteRows(at: [indexPath], with: .fade)  // 지우고 나서 numberOfRowsInSection 값 변경까지 해야 함!
+            // tableView.deleteRows(at: [indexPath], with: .fade)  // 지우고 나서 numberOfRowsInSection 값 변경까지 해야 함!
+            tableView.reloadData()
+            self?.saveData()
             completion(true)
         }
         
@@ -79,6 +81,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     self?.datasource[indexPath.row] = text
                     // self?.tableView.reloadData()
                     self?.tableView.reloadRows(at: [indexPath], with: .fade)
+                    self?.saveData()
                 }
             }))
             
@@ -119,6 +122,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         refreshControl.tintColor = .green
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(fetchData(_:)), for: .valueChanged)
+        
+        // UserDefault에서 저장된 값 불러오기
+        let userDefault = UserDefaults.standard
+        if let value = userDefault.array(forKey: "MemoData") as? [String] {
+            print(value, "from UserDefaults")
+            self.datasource = value
+        }
     }
     
     @objc func fetchData(_ sender:Any) {
@@ -161,6 +171,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let data = datasource[fromRow]
         datasource.remove(at: fromRow)
         datasource.insert(data, at: toRow)
+        saveData()
         tableView.reloadData()
     }
 
@@ -210,10 +221,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         // print(memo)
+        //  ============ < 변수에 저장하기 > ============
         self.datasource.append(memo)    // 데이터 추가
         memoText.text = ""              // 텍스트 필드 초기화
+        self.saveData()
         self.tableView.reloadData()     // 테이블뷰 갱신
         
+        /*
+         
+        // ======== < UserDefaults에 저장하기 > ========
+        // 1. UserDefault 인스턴스 생성
+        let userDefault = UserDefaults.standard
+        // 2. 저장하기
+        userDefault.setValue("test", forKey: "Test")
+        // 3. *동기화하기(다른 페이지에서 저장된 내용을 바로 호출할 수 있음)
+        userDefault.synchronize()
+        // 4. viewDidLoad()에서 값 불러오기
+        self.tableView.reloadData()
+         
+         */
+    }
+        
+        // ======== < UserDefaults에 저장하기 > ========
+    func saveData() {
+        let userDefault = UserDefaults.standard
+        userDefault.setValue(datasource, forKey: "MemoData")
+        userDefault.synchronize()
     }
     
     
