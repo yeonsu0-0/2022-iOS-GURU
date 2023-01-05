@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F3D98932967A56E0010CAD7 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D98922967A56E0010CAD7 /* BannerViewController.swift */; };
 		2FFA424C2965827A00CB5BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA424B2965827A00CB5BA9 /* AppDelegate.swift */; };
 		2FFA424E2965827A00CB5BA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA424D2965827A00CB5BA9 /* SceneDelegate.swift */; };
 		2FFA42502965827A00CB5BA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA424F2965827A00CB5BA9 /* ViewController.swift */; };
@@ -15,9 +16,11 @@
 		2FFA42582965827C00CB5BA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA42562965827C00CB5BA9 /* LaunchScreen.storyboard */; };
 		2FFA426029658CC200CB5BA9 /* WebtoonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA425F29658CC200CB5BA9 /* WebtoonCell.swift */; };
 		2FFA426229658FFC00CB5BA9 /* WebtoonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA426129658FFC00CB5BA9 /* WebtoonData.swift */; };
+		2FFA426729659DD100CB5BA9 /* WebtoonMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA426629659DD100CB5BA9 /* WebtoonMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F3D98922967A56E0010CAD7 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		2FFA42482965827A00CB5BA9 /* Naver-Webtoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Naver-Webtoon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFA424B2965827A00CB5BA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FFA424D2965827A00CB5BA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		2FFA42592965827C00CB5BA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FFA425F29658CC200CB5BA9 /* WebtoonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebtoonCell.swift; sourceTree = "<group>"; };
 		2FFA426129658FFC00CB5BA9 /* WebtoonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebtoonData.swift; sourceTree = "<group>"; };
+		2FFA426629659DD100CB5BA9 /* WebtoonMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebtoonMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +64,9 @@
 		2FFA424A2965827A00CB5BA9 /* Naver-Webtoon */ = {
 			isa = PBXGroup;
 			children = (
+				2FFA426329659D9000CB5BA9 /* ViewControllers */,
 				2FFA424B2965827A00CB5BA9 /* AppDelegate.swift */,
 				2FFA424D2965827A00CB5BA9 /* SceneDelegate.swift */,
-				2FFA424F2965827A00CB5BA9 /* ViewController.swift */,
 				2FFA42512965827A00CB5BA9 /* Main.storyboard */,
 				2FFA42542965827C00CB5BA9 /* Assets.xcassets */,
 				2FFA42562965827C00CB5BA9 /* LaunchScreen.storyboard */,
@@ -71,6 +75,16 @@
 				2FFA426129658FFC00CB5BA9 /* WebtoonData.swift */,
 			);
 			path = "Naver-Webtoon";
+			sourceTree = "<group>";
+		};
+		2FFA426329659D9000CB5BA9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2FFA424F2965827A00CB5BA9 /* ViewController.swift */,
+				2FFA426629659DD100CB5BA9 /* WebtoonMainViewController.swift */,
+				2F3D98922967A56E0010CAD7 /* BannerViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +160,11 @@
 			files = (
 				2FFA42502965827A00CB5BA9 /* ViewController.swift in Sources */,
 				2FFA424C2965827A00CB5BA9 /* AppDelegate.swift in Sources */,
+				2FFA426729659DD100CB5BA9 /* WebtoonMainViewController.swift in Sources */,
 				2FFA426229658FFC00CB5BA9 /* WebtoonData.swift in Sources */,
 				2FFA426029658CC200CB5BA9 /* WebtoonCell.swift in Sources */,
 				2FFA424E2965827A00CB5BA9 /* SceneDelegate.swift in Sources */,
+				2F3D98932967A56E0010CAD7 /* BannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

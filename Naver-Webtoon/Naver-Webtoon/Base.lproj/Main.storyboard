@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UCQ-BA-WaJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
@@ -102,6 +102,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="3.3482142857142856"/>
+        </scene>
+        <!--Webtoon Main View Controller-->
+        <scene sceneID="A2G-gG-ASW">
+            <objects>
+                <viewController id="UCQ-BA-WaJ" customClass="WebtoonMainViewController" customModule="Naver_Webtoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JtV-RW-B04">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-PD-L7d">
+                                <rect key="frame" x="0.0" y="48" width="414" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="C2w-PD-L7d" secondAttribute="height" multiplier="218:120" id="9Kz-bM-EjP"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="8Iw-yq-nF4"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="sGO-iz-vaC"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FEH-LT-ru7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C2w-PD-L7d" firstAttribute="leading" secondItem="FEH-LT-ru7" secondAttribute="leading" id="9Ox-en-Sjr"/>
+                            <constraint firstItem="C2w-PD-L7d" firstAttribute="trailing" secondItem="FEH-LT-ru7" secondAttribute="trailing" id="ewr-eu-9J8"/>
+                            <constraint firstItem="C2w-PD-L7d" firstAttribute="top" secondItem="FEH-LT-ru7" secondAttribute="top" id="oIe-pk-Ekp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bannerScrollView" destination="C2w-PD-L7d" id="25k-dT-zpJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hi-ff-GFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="715.94202898550725" y="2.6785714285714284"/>
         </scene>
     </scenes>
     <resources>
