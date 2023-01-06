@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var webtoonCollectionView: UICollectionView!
 
     // Step 5. 구조체로 데이터 생성 (WebtoonData.swift)
     var webtoonData = [
@@ -24,10 +25,26 @@ class ViewController: UIViewController {
     WebToonData("약한영웅", "title10", 4.8, "서패스/김진석")
     ]
     
+    var webtoonTitle = [
+    "팔이피플"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    
+    /* error
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(self.webtoonCollectionView.indexPathsForSelectedItems)
+        if let indexPath = self.webtoonCollectionView.indexPathsForSelectedItems?.first {
+            let webtoon_info = webtoonData[indexPath.row]
+            if let vc = segue.destination as? SubViewController {
+                vc.titles.text = webtoon_info.title
+            }
+        }
+    }
+    */
 
 }
 

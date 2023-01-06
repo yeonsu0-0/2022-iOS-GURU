@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UCQ-BA-WaJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eNb-Kh-q3E">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
@@ -80,6 +80,7 @@
                                             <outlet property="ratingLabel" destination="Cvs-A7-3lF" id="bAN-Ki-XzH"/>
                                             <outlet property="titleImage" destination="bLx-T2-AQj" id="E4d-8B-fLE"/>
                                             <outlet property="titleLabel" destination="fNs-ij-Ben" id="xwV-LR-CAL"/>
+                                            <segue destination="NmD-Hd-kX2" kind="show" id="Dcv-92-aF8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -98,6 +99,9 @@
                             <constraint firstItem="c8q-gu-fYO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wvP-zA-0w9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webtoonCollectionView" destination="c8q-gu-fYO" id="tnG-Yx-s7P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,7 +124,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="sGO-iz-vaC"/>
                             </scrollView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaT-eL-T98">
-                                <rect key="frame" x="0.0" y="276" width="414" height="586"/>
+                                <rect key="frame" x="0.0" y="320" width="414" height="542"/>
                                 <connections>
                                     <segue destination="Srk-xH-TXb" kind="embed" id="bEF-Oj-O5C"/>
                                 </connections>
@@ -138,21 +142,23 @@
                             <constraint firstItem="oaT-eL-T98" firstAttribute="bottom" secondItem="FEH-LT-ru7" secondAttribute="bottom" id="oYR-0D-5zy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="s21-df-qFk"/>
                     <connections>
                         <outlet property="bannerScrollView" destination="C2w-PD-L7d" id="25k-dT-zpJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hi-ff-GFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844.92753623188412" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="1755.072463768116" y="2.6785714285714284"/>
         </scene>
         <!--Daily Webtoon List View Controller-->
         <scene sceneID="O7B-6B-Ley">
             <objects>
                 <viewController id="Srk-xH-TXb" customClass="DailyWebtoonListViewController" customModule="Naver_Webtoon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YVK-b3-57i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="586"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="542"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="nCh-7m-1Fh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -160,11 +166,82 @@
             </objects>
             <point key="canvasLocation" x="843" y="662"/>
         </scene>
+        <!--Sub View Controller-->
+        <scene sceneID="nDv-Xe-seY">
+            <objects>
+                <viewController storyboardIdentifier="subView" id="NmD-Hd-kX2" customClass="SubViewController" customModule="Naver_Webtoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ww2-Xo-mOI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iwr-Tz-uN3">
+                                <rect key="frame" x="20" y="68" width="374" height="411.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Iwr-Tz-uN3" secondAttribute="height" multiplier="1:1.1" id="hGi-Le-Ue6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDj-Cu-69l">
+                                <rect key="frame" x="20" y="503.5" width="62" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-Kt-s75">
+                                <rect key="frame" x="20" y="540.5" width="40" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Krc-la-HaO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hcW-Kt-s75" firstAttribute="leading" secondItem="Krc-la-HaO" secondAttribute="leading" constant="20" id="1Jn-vb-S0b"/>
+                            <constraint firstItem="eDj-Cu-69l" firstAttribute="top" secondItem="Iwr-Tz-uN3" secondAttribute="bottom" constant="24" id="5cf-na-D90"/>
+                            <constraint firstItem="hcW-Kt-s75" firstAttribute="top" secondItem="eDj-Cu-69l" secondAttribute="bottom" constant="8" id="Hrk-nB-6Cj"/>
+                            <constraint firstItem="Iwr-Tz-uN3" firstAttribute="top" secondItem="Krc-la-HaO" secondAttribute="top" constant="20" id="LfN-D7-zjc"/>
+                            <constraint firstItem="eDj-Cu-69l" firstAttribute="leading" secondItem="Krc-la-HaO" secondAttribute="leading" constant="20" id="SeI-gw-7fh"/>
+                            <constraint firstItem="Krc-la-HaO" firstAttribute="trailing" secondItem="Iwr-Tz-uN3" secondAttribute="trailing" constant="20" id="sVP-HL-RS6"/>
+                            <constraint firstItem="Iwr-Tz-uN3" firstAttribute="leading" secondItem="Krc-la-HaO" secondAttribute="leading" constant="20" id="wpr-ub-a0c"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PLz-n0-b2k"/>
+                    <connections>
+                        <outlet property="authors" destination="hcW-Kt-s75" id="qPg-qr-F6V"/>
+                        <outlet property="images" destination="Iwr-Tz-uN3" id="8G7-2K-dyO"/>
+                        <outlet property="titles" destination="eDj-Cu-69l" id="hKP-VS-wq2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9fV-IC-Exg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-929" y="1494"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Uzs-wP-L4e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eNb-Kh-q3E" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0bp-AU-3Kx">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UCQ-BA-WaJ" kind="relationship" relationship="rootViewController" id="bkD-dz-1kT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldm-Un-c9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844.92753623188412" y="2.6785714285714284"/>
+        </scene>
     </scenes>
     <resources>
         <image name="title01" width="480" height="623"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

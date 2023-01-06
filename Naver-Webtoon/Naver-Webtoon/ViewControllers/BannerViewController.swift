@@ -9,7 +9,7 @@ import UIKit
 
 class BannerViewController:UIViewController {
 
-    let banner_images = ["banner01", "banner02", "banner03", "banner04"]
+    let banner_images = ["banner01", "banner02", "banner03", "banner04", "banner05", "banner06", "banner07", "banner08", "banner09", "banner10"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
