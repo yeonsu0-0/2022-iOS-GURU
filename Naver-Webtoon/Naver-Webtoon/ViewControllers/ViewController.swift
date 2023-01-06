@@ -9,17 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var titleImages = ["title01", "title02", "title03", "title04", "title05", "title06"]
-    
-    
+
     // Step 5. 구조체로 데이터 생성 (WebtoonData.swift)
     var webtoonData = [
-    WebToonData("팔이피플", "title02", 4.8, "매미/희세"),
+    WebToonData("팔이피플", "title01", 4.8, "매미/희세"),
     WebToonData("루루라라 우리네 인생", "title02", 4.8, "현이씨"),
-    WebToonData("순정말고 순종", "title02", 4.7, "슈안"),
-    WebToonData("웅크", "title02", 4.9, "나유진"),
-    WebToonData("소공녀 민트", "title02", 4.6, "봉이/갈피/오윤"),
-    WebToonData("안녕, 나의 수집", "title02", 4.8, "하린"),
+    WebToonData("순정말고 순종", "title03", 4.7, "슈안"),
+    WebToonData("웅크", "title04", 4.9, "나유진"),
+    WebToonData("소공녀 민트", "title05", 4.6, "봉이/갈피/오윤"),
+    WebToonData("안녕, 나의 수집", "title06", 4.8, "하린"),
+    WebToonData("여신강림", "title07", 4.8, "야옹이"),
+    WebToonData("독립일기", "title08", 4.9, "자까"),
+    WebToonData("마루는 강쥐", "title09", 4.8, "모죠"),
+    WebToonData("약한영웅", "title10", 4.8, "서패스/김진석")
     ]
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
 // Step 1. UICollectionViewDataSource를 상속시켜서 numberOfItemsInSection, cellForItemAt 구현
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titleImages.count
+        return webtoonData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,12 +52,13 @@ extension ViewController: UICollectionViewDataSource {
         cell.ratingLabel.text = "\(data.rating!)"
         cell.authorLabel.text = data.author
         // TODO : 타이틀 이미지 변경
-        cell.titleImage.image = UIImage(named: titleImages[indexPath.row])
+        cell.titleImage.image = UIImage(named: data.title_image)
         
         // 웹툰 간 간격에 stroke 추가
         cell.layer.borderWidth = 0.3
         cell.layer.borderColor = UIColor.lightGray.cgColor
-
+        
+        
         return cell
     }
 }
@@ -64,7 +67,8 @@ extension ViewController: UICollectionViewDataSource {
     // * Cell간의 간격은 [storyboard] - Collection View - [size inspector]에서 설정할 수 있다
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.frame.size.width / 3
+        // let width = self.view.frame.size.width / 3
+        let width = UIScreen.main.bounds.width / 3
         let height =  width * 1.9
         
         return CGSize(width: width, height: height)

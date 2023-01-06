@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Naver_Webtoon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webtoonListView" id="BYZ-38-t0r" customClass="ViewController" customModule="Naver_Webtoon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21.739130434782609" y="3.3482142857142856"/>
+            <point key="canvasLocation" x="155" y="766"/>
         </scene>
         <!--Webtoon Main View Controller-->
         <scene sceneID="A2G-gG-ASW">
@@ -119,13 +119,23 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="8Iw-yq-nF4"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="sGO-iz-vaC"/>
                             </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaT-eL-T98">
+                                <rect key="frame" x="0.0" y="276" width="414" height="586"/>
+                                <connections>
+                                    <segue destination="Srk-xH-TXb" kind="embed" id="bEF-Oj-O5C"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FEH-LT-ru7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="C2w-PD-L7d" firstAttribute="leading" secondItem="FEH-LT-ru7" secondAttribute="leading" id="9Ox-en-Sjr"/>
+                            <constraint firstItem="oaT-eL-T98" firstAttribute="trailing" secondItem="FEH-LT-ru7" secondAttribute="trailing" id="JTQ-Dg-az6"/>
+                            <constraint firstItem="oaT-eL-T98" firstAttribute="top" secondItem="C2w-PD-L7d" secondAttribute="bottom" id="W8z-PW-vV9"/>
+                            <constraint firstItem="oaT-eL-T98" firstAttribute="leading" secondItem="FEH-LT-ru7" secondAttribute="leading" id="Ywb-mQ-nd5"/>
                             <constraint firstItem="C2w-PD-L7d" firstAttribute="trailing" secondItem="FEH-LT-ru7" secondAttribute="trailing" id="ewr-eu-9J8"/>
                             <constraint firstItem="C2w-PD-L7d" firstAttribute="top" secondItem="FEH-LT-ru7" secondAttribute="top" id="oIe-pk-Ekp"/>
+                            <constraint firstItem="oaT-eL-T98" firstAttribute="bottom" secondItem="FEH-LT-ru7" secondAttribute="bottom" id="oYR-0D-5zy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -134,7 +144,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hi-ff-GFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="715.94202898550725" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="844.92753623188412" y="2.6785714285714284"/>
+        </scene>
+        <!--Daily Webtoon List View Controller-->
+        <scene sceneID="O7B-6B-Ley">
+            <objects>
+                <viewController id="Srk-xH-TXb" customClass="DailyWebtoonListViewController" customModule="Naver_Webtoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YVK-b3-57i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="586"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cmp-Bi-8XI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="843" y="662"/>
         </scene>
     </scenes>
     <resources>
