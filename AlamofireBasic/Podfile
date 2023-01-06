@@ -7,4 +7,5 @@ target 'AlamofireBasic' do
 
   # Pods for AlamofireBasic
   pod 'Alamofire'
+  pod 'AlamofireImage', '~> 4.1'
 end
