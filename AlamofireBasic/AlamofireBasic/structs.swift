@@ -24,3 +24,25 @@ struct Personinfo:Codable {
     let lastName:String
     let picture:URL?
 }
+
+struct PersonDetail:Codable {
+    let id:String
+    let phone:String
+    let lastName:String
+    let firstName:String
+    let location:Location?
+    let email:String
+    let gender:String
+    let registerDate:String
+    let updatedDate:String
+    let dateOfBirth:String
+    let picture:URL
+}
+
+struct Location:Codable {
+    let street:String
+    let city:String
+    let state:String
+    let country:String
+    let timezone:String
+}

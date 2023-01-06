@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     func getData() {
         print("Start Loading")
         let headers: HTTPHeaders = [
-            "app-id": "id"    // id
+            "app-id": "63b79f2d4809b962cfec14c3"    // id
         ]
         
         // API request
@@ -57,7 +57,21 @@ class ViewController: UIViewController {
         }
         print("Finish Loading")
     }
-
+    
+    //
+    // indexPathsForSelectedItems
+    // cell 선택 시 상세 화면 띄우기
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(self.personCollectionView.indexPathsForSelectedItems)
+        if let indexPath = self.personCollectionView.indexPathsForSelectedItems?.first {
+            let person_info = person_data[indexPath.row]
+            print(person_info.id)
+            if let vc = segue.destination as? DetailController {
+                vc.user_id = person_info.id
+            }
+        }
+    }
+    //
 }
 
 
@@ -102,3 +116,19 @@ extension ViewController:UICollectionViewDelegateFlowLayout {
     }
 }
 
+
+
+// ================ < cell 선택 시 상세 화면 띄우기 > ================
+// 1. 리스트 view에서 Navigation Controller 설정
+// 2. 리스트 view의 cell - 새로운 view로 연결(show): back 버튼 생성
+
+
+
+extension ViewController:UICollectionViewDelegate {
+    /*
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        print(person_data[indexPath.row])
+    }
+    */
+}
