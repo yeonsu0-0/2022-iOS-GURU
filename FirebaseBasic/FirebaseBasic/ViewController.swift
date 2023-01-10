@@ -32,6 +32,12 @@ class ViewController: UIViewController, FUIAuthDelegate {
             if let currentUser = auth.currentUser {
                 // 로그인 상태
                 NSLog("Logged In")
+                // 로그인 시 환영 메세지 띄우기
+                if let displayName = currentUser.displayName {
+                    let alertController = UIAlertController(title: "Welcome!", message: "\(displayName)", preferredStyle: .alert)   // 알림창
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alertController, animated: false, completion: nil)
+                }
             } else {
                 // 로그아웃 상태
                 NSLog("Logged Out")
@@ -53,5 +59,23 @@ class ViewController: UIViewController, FUIAuthDelegate {
     }
 
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        NSLog("Sign In")
+        NSLog("\(authDataResult)")
+    }
+
+    @IBAction func didSignOut(_ sender: UIButton) {
+        do {
+            try authUI?.signOut()
+        } catch {
+            NSLog("Logout Error")
+        }
+    }
+    
 }
 
