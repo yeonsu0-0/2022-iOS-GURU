@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F87794B296D45A900D76028 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87794A296D45A900D76028 /* FirstViewController.swift */; };
+		2F87794D296D45DD00D76028 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87794C296D45DD00D76028 /* SecondViewController.swift */; };
+		2F87794F296D45F100D76028 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87794E296D45F100D76028 /* ThirdViewController.swift */; };
+		2F877952296D472300D76028 /* nyanCat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2F877951296D472300D76028 /* nyanCat.gif */; };
 		2FEBFE7B296C365900BCC8CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEBFE7A296C365900BCC8CE /* AppDelegate.swift */; };
 		2FEBFE7D296C365900BCC8CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEBFE7C296C365900BCC8CE /* SceneDelegate.swift */; };
 		2FEBFE7F296C365900BCC8CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEBFE7E296C365900BCC8CE /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F87794A296D45A900D76028 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		2F87794C296D45DD00D76028 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2F87794E296D45F100D76028 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		2F877951296D472300D76028 /* nyanCat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nyanCat.gif; sourceTree = "<group>"; };
 		2FEBFE77296C365900BCC8CE /* UIControlBasic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIControlBasic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FEBFE7A296C365900BCC8CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FEBFE7C296C365900BCC8CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F877950296D46E800D76028 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F877951296D472300D76028 /* nyanCat.gif */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2FEBFE6E296C365900BCC8CE = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +78,7 @@
 		2FEBFE79296C365900BCC8CE /* UIControlBasic */ = {
 			isa = PBXGroup;
 			children = (
+				2F877950296D46E800D76028 /* Resources */,
 				2FEBFE90296C369B00BCC8CE /* Utils */,
 				2FEBFE8F296C369400BCC8CE /* ViewControllers */,
 				2FEBFE8E296C368800BCC8CE /* StoryBoards */,
@@ -89,6 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				2FEBFE7E296C365900BCC8CE /* ViewController.swift */,
+				2F87794A296D45A900D76028 /* FirstViewController.swift */,
+				2F87794C296D45DD00D76028 /* SecondViewController.swift */,
+				2F87794E296D45F100D76028 /* ThirdViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,6 +184,7 @@
 				2FEBFE82296C365900BCC8CE /* Main.storyboard in Resources */,
 				2FEBFE98296C375900BCC8CE /* Third.storyboard in Resources */,
 				2FEBFE96296C375000BCC8CE /* First.storyboard in Resources */,
+				2F877952296D472300D76028 /* nyanCat.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +198,9 @@
 				2FEBFE7F296C365900BCC8CE /* ViewController.swift in Sources */,
 				2FEBFE7B296C365900BCC8CE /* AppDelegate.swift in Sources */,
 				2FEBFE7D296C365900BCC8CE /* SceneDelegate.swift in Sources */,
+				2F87794D296D45DD00D76028 /* SecondViewController.swift in Sources */,
+				2F87794F296D45F100D76028 /* ThirdViewController.swift in Sources */,
+				2F87794B296D45A900D76028 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

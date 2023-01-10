@@ -8,7 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var previousIndex:Int = 0
+    var selectedIndex:Int = 0
+    
     /* Tab Bar 커스텀 이미지 넣기 */
     // 1. Main StoryBoard에 이미지 뷰 넣고 3개 다 IBOutlet 연결
     // 2. Image View - [Attribute inspector] - tag로 index 설정
@@ -64,7 +67,30 @@ class ViewController: UIViewController {
     // Tab Menu 터치 시 화면 전환
     @objc func tabTapped(_ sender: UITapGestureRecognizer) {
         NSLog("탭!")
-        NSLog("\(sender.view?.tag)")    // 누가 터치했는지 확인
+        //NSLog("\(sender.view?.tag)")    // 누가 터치했는지 확인
+        
+        
+        // 9. 탭한 화면으로 바꾸기
+        if let tag = sender.view?.tag {
+            previousIndex = selectedIndex   // 이전 뷰
+            selectedIndex = tag     // 새로 선택한 뷰
+            
+            // ============ < 이전 뷰 빼기 > ============
+            let previousVC = viewControllers[previousIndex]
+            previousVC.willMove(toParent: self)
+            previousVC.view.removeFromSuperview()   // 슈퍼뷰로부터 제거
+            previousVC.removeFromParent()   // 관계 제거
+            
+            // ============ < 현재 뷰 올리기 > ============
+            let currentVC = viewControllers[selectedIndex]
+            currentVC.view.frame = UIApplication.shared.windows[0].frame    // 화면 크기 잡기
+            currentVC.didMove(toParent: self)
+            self.addChild(currentVC)
+            self.view.addSubview(currentVC.view)
+            
+            // ============ < 탭 뷰 올리기 > ============
+            self.view.bringSubviewToFront(tabStackView)
+        }
     }
 
 }
