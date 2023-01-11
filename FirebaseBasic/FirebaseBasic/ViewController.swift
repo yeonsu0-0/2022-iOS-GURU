@@ -12,7 +12,6 @@ import FirebaseEmailAuthUI
 class ViewController: UIViewController, FUIAuthDelegate {
 
     var handle:AuthStateDidChangeListenerHandle!
-    
     let authUI = FUIAuth.defaultAuthUI()
     
     override func viewDidLoad() {
@@ -47,6 +46,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
                 self.authUI!.providers = providers
                 let authVC = self.authUI!.authViewController()
                 authVC.modalPresentationStyle = .fullScreen
+                // authVC.setNavigationBarHidden(true, animated: false)
                 self.present(authVC, animated: false, completion: nil)
             }
         }
@@ -75,7 +75,25 @@ class ViewController: UIViewController, FUIAuthDelegate {
         } catch {
             NSLog("Logout Error")
         }
+        // 또는 do { try } catch { }문과 동일한 표현
+        // try! authUI?.signOut()
+        // try? authUI?.signOut()
     }
     
 }
 
+// authVC의 상위 View
+extension FUIAuthBaseViewController {
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // cancel 버튼 없애기
+        self.navigationItem.leftBarButtonItem = nil
+        // self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+}
