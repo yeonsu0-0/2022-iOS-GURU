@@ -33,20 +33,30 @@ class ViewController: UIViewController {
         // setValue로 데이터 쓰기
         // 데이터 새로 생성
         self.ref.child("users/123456/username").setValue("yeonsu")
-        self.ref.child("users/123456/username").setValue(["test":"apple"])  // 하위 데이터로 새로 생성
+        self.ref.child("users/123456/username").setValue(["test":"apple"]) {  // 하위 데이터로 새로 생성
+            
+            /* Add a Completion Block */
+            // If you want to know when your data has been committed, you can add a completion block.
+            (error:Error?, ref:DatabaseReference) in
+             if let error = error {
+               print("Data could not be saved: \(error).")
+             } else {
+                 // 알림창 띄우기
+                 let alertVC = UIAlertController(title: "완료", message: "Data saved!!", preferredStyle: .alert)
+                 alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                 self.present(alertVC, animated: true, completion: nil)
+                print("Data saved successfully!")
+             }
+        }
         
         // updateChildValues: 기존 데이터 수정
         self.ref.child("users/123456/username").updateChildValues(["test":"banana"])  //
         NSLog("2")  // 비동기
         
         ref2 = ref.child("users/2468")
-        
-    // observe: 값이 바뀌면 전체 데이터를 다 읽어들인다.
-        refHandle = ref.observe(DataEventType.value, with: { snapshot in
-            let postDict = snapshot.value as? [String: AnyObject] ?? [:]
-            print(postDict)
-        })
     }
+    
+
     
     // observeSingleEvent: 어떤 액션을 취했을 때 혹은 어떤 순간만 딱 한 번 데이터를 불러온다.
     // 한 번만 로드하면 되고, 자주 변경되거나 적극적인 수신이 필요하지 않은 데이터에 유용
@@ -57,6 +67,27 @@ class ViewController: UIViewController {
             print(data)
         }
     }
+    
+    // removeValue: 데이터 삭제
+    @IBAction func removeData(_ sender: Any) {
+        NSLog("remove btn pressed!")
+        self.ref.child("users/123456/username").removeValue() {
+            
+            /* Add a Completion Block */
+            // If you want to know when your data has been committed, you can add a completion block.
+            // 알림창 띄우기
+            (error:Error?, ref:DatabaseReference) in
+             if let error = error {
+               print("Data could not be saved: \(error).")
+             } else {
+                 let alertVC = UIAlertController(title: "완료", message: "Remove Data!!", preferredStyle: .alert)
+                 alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                 self.present(alertVC, animated: true, completion: nil)
+                print("Data saved successfully!")
+             }
+        }
+    }
+    
     
 }
 
