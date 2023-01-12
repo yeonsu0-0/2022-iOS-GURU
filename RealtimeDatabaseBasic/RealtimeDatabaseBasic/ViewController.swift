@@ -56,7 +56,26 @@ class ViewController: UIViewController {
         ref2 = ref.child("users/2468")
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("옵저버 등록")
+        
+    /* 옵저버 설정 */
+    // 값이 바뀌면 전체 데이터를 다 읽어들인다.
+        refHandle = ref.observe(DataEventType.value, with: { snapshot in
+            let postDict = snapshot.value as? [String: AnyObject] ?? [:]
+            print(postDict)
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("옵저버 삭제")
+        
+    /* 옵저버 분리 */
+    // 화면이 사라지면 옵저버를 삭제한다.
+        ref2.removeObserver(withHandle: refHandle)
+    }
     
     // observeSingleEvent: 어떤 액션을 취했을 때 혹은 어떤 순간만 딱 한 번 데이터를 불러온다.
     // 한 번만 로드하면 되고, 자주 변경되거나 적극적인 수신이 필요하지 않은 데이터에 유용
