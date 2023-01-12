@@ -16,8 +16,6 @@ import FirebaseDatabase
  4. DB 명령어를 수행한다. (추가, 수정, 삭제)
  */
 
-
-
 class ViewController: UIViewController {
     
     var ref: DatabaseReference!     // 데이터베이스 연결할 변수
@@ -29,11 +27,26 @@ class ViewController: UIViewController {
         
         ref = Database.database().reference()
         NSLog("1")
+
+        // 키 값 새로 발급
+        // 추가 정보 관리할 때 등
+        guard let key = ref.child("posts").childByAutoId().key else { return }
+        let post = ["uid": "rabbit",
+                    "author": "Bonny",
+                    "title": "Title"
+                    ] // 더미 데이터
         
+        let childUpdates = ["/posts/\(key)": post,
+                            "/user-posts/rabbit/posts/\(key)/": post]
+        
+        ref.updateChildValues(childUpdates)
+        
+        /*
+         
         // setValue로 데이터 쓰기
         // 데이터 새로 생성
-        self.ref.child("users/123456/username").setValue("yeonsu")
-        self.ref.child("users/123456/username").setValue(["test":"apple"]) {  // 하위 데이터로 새로 생성
+        self.ref.child("users/\(key)").setValue(
+            ["dinner":"meat", "drink":"coke", "date":Date().timeIntervalSince1970]) {
             
             /* Add a Completion Block */
             // If you want to know when your data has been committed, you can add a completion block.
@@ -48,6 +61,8 @@ class ViewController: UIViewController {
                 print("Data saved successfully!")
              }
         }
+       
+         */
         
         // updateChildValues: 기존 데이터 수정
         self.ref.child("users/123456/username").updateChildValues(["test":"banana"])  //
