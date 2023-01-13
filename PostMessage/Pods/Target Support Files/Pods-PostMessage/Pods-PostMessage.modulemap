@@ -1,0 +1,6 @@
+framework module Pods_PostMessage {
+  umbrella header "Pods-PostMessage-umbrella.h"
+
+  export *
+  module * { export * }
+}
