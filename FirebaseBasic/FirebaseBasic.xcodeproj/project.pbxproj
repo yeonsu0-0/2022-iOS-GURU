@@ -13,12 +13,13 @@
 		2FD04096296D504B00540D09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FD04094296D504B00540D09 /* Main.storyboard */; };
 		2FD04098296D504C00540D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FD04097296D504C00540D09 /* Assets.xcassets */; };
 		2FD0409B296D504C00540D09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FD04099296D504C00540D09 /* LaunchScreen.storyboard */; };
-		2FD040A3296D510B00540D09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FD040A2296D510B00540D09 /* GoogleService-Info.plist */; };
+		2FE14201296E434F004E4DB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FE14200296E434F004E4DB8 /* GoogleService-Info.plist */; };
 		AAC44C65BC95CDD581FDF21B /* Pods_FirebaseBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0F8204B20121DFC9936175 /* Pods_FirebaseBasic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B0F8204B20121DFC9936175 /* Pods_FirebaseBasic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseBasic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB148742971638D00C74B8A /* FirebaseBasic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirebaseBasic.entitlements; sourceTree = "<group>"; };
 		2FD0408B296D504B00540D09 /* FirebaseBasic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseBasic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD0408E296D504B00540D09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FD04090296D504B00540D09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +28,7 @@
 		2FD04097296D504C00540D09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FD0409A296D504C00540D09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FD0409C296D504C00540D09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FD040A2296D510B00540D09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2FE14200296E434F004E4DB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FCA470BD96BFB4A1B9EC427 /* Pods-FirebaseBasic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseBasic.release.xcconfig"; path = "Target Support Files/Pods-FirebaseBasic/Pods-FirebaseBasic.release.xcconfig"; sourceTree = "<group>"; };
 		E832161DAD191CFB6ACFBBE5 /* Pods-FirebaseBasic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseBasic.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseBasic/Pods-FirebaseBasic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +66,7 @@
 		2FD0408D296D504B00540D09 /* FirebaseBasic */ = {
 			isa = PBXGroup;
 			children = (
+				2FB148742971638D00C74B8A /* FirebaseBasic.entitlements */,
 				2FD0408E296D504B00540D09 /* AppDelegate.swift */,
 				2FD04090296D504B00540D09 /* SceneDelegate.swift */,
 				2FD04092296D504B00540D09 /* ViewController.swift */,
@@ -72,7 +74,7 @@
 				2FD04097296D504C00540D09 /* Assets.xcassets */,
 				2FD04099296D504C00540D09 /* LaunchScreen.storyboard */,
 				2FD0409C296D504C00540D09 /* Info.plist */,
-				2FD040A2296D510B00540D09 /* GoogleService-Info.plist */,
+				2FE14200296E434F004E4DB8 /* GoogleService-Info.plist */,
 			);
 			path = FirebaseBasic;
 			sourceTree = "<group>";
@@ -91,7 +93,6 @@
 				E832161DAD191CFB6ACFBBE5 /* Pods-FirebaseBasic.debug.xcconfig */,
 				6FCA470BD96BFB4A1B9EC427 /* Pods-FirebaseBasic.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,7 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD0409B296D504C00540D09 /* LaunchScreen.storyboard in Resources */,
-				2FD040A3296D510B00540D09 /* GoogleService-Info.plist in Resources */,
+				2FE14201296E434F004E4DB8 /* GoogleService-Info.plist in Resources */,
 				2FD04098296D504C00540D09 /* Assets.xcassets in Resources */,
 				2FD04096296D504B00540D09 /* Main.storyboard in Resources */,
 			);
@@ -359,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FirebaseBasic/FirebaseBasic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -387,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FirebaseBasic/FirebaseBasic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

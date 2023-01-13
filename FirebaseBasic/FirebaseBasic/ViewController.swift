@@ -8,16 +8,54 @@
 import UIKit
 import FirebaseAuthUI
 import FirebaseEmailAuthUI
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseFacebookAuthUI
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class ViewController: UIViewController, FUIAuthDelegate {
 
+class ViewController: UIViewController, FUIAuthDelegate, LoginButtonDelegate {
+    
+    
+    
     var handle:AuthStateDidChangeListenerHandle!
-    let authUI = FUIAuth.defaultAuthUI()
+    let authUI = FUIAuth.defaultAuthUI()!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         
-        authUI!.delegate = self
+        authUI.delegate = self
+    }
+    
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {
+        
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        let credential = FacebookAuthProvider
+            .credential(withAccessToken: AccessToken.current!.tokenString)
+        
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                let authError = error as NSError
+                print(error.localizedDescription)
+                return
+            }
+            // ...
+            return
+        }
+        // User is signed in
+        
+        
     }
     
     /* 인증 상태 수신 대기 */
@@ -41,10 +79,11 @@ class ViewController: UIViewController, FUIAuthDelegate {
                 // 로그아웃 상태
                 NSLog("Logged Out")
                 let providers: [FUIAuthProvider] = [
-                  FUIEmailAuth()
+                  FUIEmailAuth(),
+                  FUIFacebookAuth(),
                 ]
-                self.authUI!.providers = providers
-                let authVC = self.authUI!.authViewController()
+                self.authUI.providers = providers
+                let authVC = self.authUI.authViewController()
                 authVC.modalPresentationStyle = .fullScreen
                 // authVC.setNavigationBarHidden(true, animated: false)
                 self.present(authVC, animated: false, completion: nil)
@@ -71,7 +110,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
 
     @IBAction func didSignOut(_ sender: UIButton) {
         do {
-            try authUI?.signOut()
+            try authUI.signOut()
         } catch {
             NSLog("Logout Error")
         }

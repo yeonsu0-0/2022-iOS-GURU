@@ -616,6 +616,11 @@ PODS:
   - FBSDKCoreKit_Basics (14.1.0)
   - FBSDKLoginKit (14.1.0):
     - FBSDKCoreKit (= 14.1.0)
+  - Firebase/Auth (10.3.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 10.3.0)
+  - Firebase/CoreOnly (10.3.0):
+    - FirebaseCore (= 10.3.0)
   - FirebaseAnonymousAuthUI (12.3.0):
     - FirebaseAuth (< 11.0, >= 8.0)
     - FirebaseAuthUI
@@ -814,6 +819,9 @@ PODS:
   - SDWebImage/Core (5.14.3)
 
 DEPENDENCIES:
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - Firebase/Auth
   - FirebaseUI
 
 SPEC REPOS:
@@ -825,6 +833,7 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
     - FBSDKLoginKit
+    - Firebase
     - FirebaseAnonymousAuthUI
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -865,6 +874,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 24f8bc8d3b5b2a8c5c656a1329492a12e8efa792
   FBSDKCoreKit_Basics: 6e578c9bdc7aa1365dbbbde633c9ebb536bcaa98
   FBSDKLoginKit: 787de205d524c3a4b17d527916f1d066e4361660
+  Firebase: f92fc551ead69c94168d36c2b26188263860acd9
   FirebaseAnonymousAuthUI: 93be34bc7a640cc89ccdb1289916179ac6d5eaf4
   FirebaseAppCheckInterop: 9fc57dfa08f0abb737b185ea065422b55355c909
   FirebaseAuth: 0e415d29d846c1dce2fb641e46f35e9888d9bec6
@@ -897,6 +907,6 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SDWebImage: 9c36e66c8ce4620b41a7407698dda44211a96764
 
-PODFILE CHECKSUM: de7f28839bc14beba5a54503a41d69ecb8376e16
+PODFILE CHECKSUM: 82fb341cfb967e6909cbf4a5ce54cb5eae7dbe65
 
 COCOAPODS: 1.11.3
