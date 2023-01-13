@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     let storage = Storage.storage()     // storage 연결
     var storageRef:StorageReference!
+    let imagePicker = UIImagePickerController()
+    
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -43,6 +45,7 @@ class ViewController: UIViewController {
             switch PHPhotoLibrary.authorizationStatus() {   // 갤러리 접근 권한 확인
             case .authorized:
                 print("접근 가능")  // 권한O  //Info.plist에서 설정
+                self.showGallery()
             case.notDetermined:
                 print("권한 요청한 적 없음")    // 권한X
                 
@@ -88,3 +91,22 @@ class ViewController: UIViewController {
     }
 }
 
+
+// ImagePicker
+extension ViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func showGallery() {
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary  // 갤러리 접근
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    // 이미지를 고른 뒤 할 일
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)    // 선택한 뒤 이미지 피커 사라지게 함
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            return
+        }
+        imageView.image = selectedImage     // 이미지 뷰에 띄우기
+    }
+}
