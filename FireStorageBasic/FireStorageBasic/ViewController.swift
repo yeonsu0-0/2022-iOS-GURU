@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     let storage = Storage.storage()     // storage 연결
     var storageRef:StorageReference!
     let imagePicker = UIImagePickerController()
-    
+    var file_name:String!
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     @IBAction func selectImage(_ sender: Any) {
         
-        // ========= Action Sheet 띄우기 =========
+        // ========= [Select Image] - Action Sheet 띄우기 =========
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)     // 화면
         // Cancel 버튼 추가
         let action_cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)    // 액션
@@ -86,9 +86,49 @@ class ViewController: UIViewController {
         //
         present(actionSheet, animated: true, completion: nil)
         // ======================================
+    }
+    
+    // ========= 업로드 버튼 =========
+    @IBAction func uploadImage(_ sender: UIButton) {
+        print("upload btn pressed")
+        guard let image = imageView.image else {
+            print("이미지 없음")     // 이미지 선택 X
+            let alertVC = UIAlertController(title: "알림", message: "이미지를 선택하고 업로드 기능을 실행하세요", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertVC.addAction(okAction)
+            self.present(alertVC, animated: true, completion: nil)
+            return
+        }
+        print("이미지 있음") // 이미지 선택 O
         
+        // 메모리에서 데이터(사진) 업로드하기
+        if let data = image.pngData() {
+            // debugPrint(data)
+            let imageRef = storageRef.child("images/\(file_name!).png")  // 파일명 가져오기
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/png"  // 이미지 확장자 변경
+            
+            let uploadTask = imageRef.putData(data, metadata: metadata) { (metadata, error) in
+              guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+              }
+              // Metadata contains file metadata such as size, content-type.
+              let size = metadata.size
+              // You can also access to download URL after upload.
+                imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  return
+                }
+                print(downloadURL, "upload complete")
+              }
+            }
+        }
         
     }
+    // ============================
+    
 }
 
 
@@ -99,13 +139,19 @@ extension ViewController:UIImagePickerControllerDelegate, UINavigationController
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary  // 갤러리 접근
         present(imagePicker, animated: true, completion: nil)
-        
     }
+    
     // 이미지를 고른 뒤 할 일
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)    // 선택한 뒤 이미지 피커 사라지게 함
         guard let selectedImage = info[.originalImage] as? UIImage else {
             return
+        }
+        
+        // 파일명 얻어오기
+        if let url = info[.imageURL] as? URL {
+            file_name = (url.lastPathComponent as NSString).deletingPathExtension
+            print(file_name, "- file name")
         }
         imageView.image = selectedImage     // 이미지 뷰에 띄우기
     }
